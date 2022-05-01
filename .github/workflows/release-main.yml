@@ -15,6 +15,9 @@ jobs:
         id: download
         with:
           name: nickos-iso
+      - run: ls -R
+      - run: echo ${{ steps.download.output.download-path }}
+      - run: ls -l ${{ steps.download.output.download-path }}
       - uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.download.output.download-path }}
