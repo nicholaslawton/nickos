@@ -6,6 +6,7 @@ jobs:
   build:
     uses: ./.github/workflows/build-iso.yml
   create-release:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3
