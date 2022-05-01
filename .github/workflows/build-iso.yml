@@ -11,3 +11,7 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
     - run: nix-build '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix
+    - uses: actions/upload-artifact@v3
+      with:
+        name: nickos-iso
+        path: result/iso/*.iso
