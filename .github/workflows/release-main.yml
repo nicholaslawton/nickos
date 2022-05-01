@@ -1,0 +1,18 @@
+name: release
+on:
+  push:
+    tags: '*'
+jobs:
+  build:
+    uses: ./.github/workflows/build-iso.yml
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: nickos-iso
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ steps.download.output.download-path }}
