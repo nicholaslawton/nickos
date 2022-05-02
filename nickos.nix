@@ -1,0 +1,3 @@
+{
+  wificonnect = import ./wificonnect.nix;
+}
