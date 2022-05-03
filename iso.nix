@@ -7,6 +7,8 @@ let
       "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
     ];
 
+    networking.wireless.enable = true;
+
     environment.systemPackages = [
       nickos.wifi-connect
     ];
