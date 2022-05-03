@@ -1,4 +1,7 @@
-{ system ? builtins.currentSystem, nixpkgs ? <nixpkgs>, nickos ? import ./nickos.nix }:
+{ system ? builtins.currentSystem
+, nixpkgs ? <nixpkgs>
+, nickos ? import ./nickos.nix { pkgs = import nixpkgs {}; }
+}:
 
 let
   configuration = { pkgs, ... }: {
