@@ -4,6 +4,8 @@
 }:
 
 let
+  nickos = copyPath "nickos" ./nickos;
+
   configuration = { pkgs, ... }: {
     imports = [
       "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
@@ -12,9 +14,7 @@ let
 
     networking.wireless.enable = true;
 
-    environment.systemPackages = [
-      copyPath "nickos" ./nickos
-    ];
+    environment.systemPackages = [ nickos ];
   };
 
   nixos = import "${nixpkgs}/nixos" { inherit system configuration; };
