@@ -1,6 +1,6 @@
 { system ? builtins.currentSystem
 , nixpkgs ? <nixpkgs>
-, nickos ? import ./nickos.nix { pkgs = import nixpkgs {}; }
+, copyPath ? import ./copyPath.nix { stdenv = (import nixpkgs {}).stdenv; }
 }:
 
 let
@@ -13,7 +13,7 @@ let
     networking.wireless.enable = true;
 
     environment.systemPackages = [
-      nickos.wifi-connect
+      copyPath "nickos" ./nickos
     ];
   };
 
