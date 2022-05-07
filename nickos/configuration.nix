@@ -6,6 +6,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./networking-wireless-networks.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -14,11 +15,6 @@
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.networks = {
-    herbelic = {
-      psk = "no29YfjaLkIqWcTC1n5i";
-    };
-  };
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
