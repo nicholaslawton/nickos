@@ -1,9 +1,11 @@
 { system ? builtins.currentSystem
 , nixpkgs ? <nixpkgs>
-, nickos ? import ./nickos.nix { pkgs = import nixpkgs {}; }
+, copyPath ? import ./copyPath.nix { stdenv = (import nixpkgs {}).stdenv; }
 }:
 
 let
+  nickos = copyPath "nickos" ./nickos;
+
   configuration = { pkgs, ... }: {
     imports = [
       "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
@@ -12,9 +14,7 @@ let
 
     networking.wireless.enable = true;
 
-    environment.systemPackages = [
-      nickos.wifi-connect
-    ];
+    environment.systemPackages = [ nickos ];
   };
 
   nixos = import "${nixpkgs}/nixos" { inherit system configuration; };
