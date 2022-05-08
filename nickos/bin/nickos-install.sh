@@ -67,4 +67,22 @@ sudo cp /nix/store/*-nickos/configuration.nix /mnt/etc/nixos
 # Install
 
 sudo nixos-install
-reboot
+
+# Create user
+
+echo Enter your details to create your user account
+echo -n "Your full name: "
+read name
+echo -n "Account name for login: "
+read login
+
+chroot /mnt sh <<ROOT
+echo "adding $name as $login"
+useradd -c $name -m $login
+echo "setting password for $login"
+passwd $login
+echo "user account created"
+ROOT
+
+echo reboot
+#reboot
