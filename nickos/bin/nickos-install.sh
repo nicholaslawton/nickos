@@ -76,13 +76,7 @@ read name
 echo -n "Account name for login: "
 read login
 
-chroot /mnt sh <<ROOT
-echo "adding $name as $login"
-useradd -c $name -m $login
-echo "setting password for $login"
-passwd $login
-echo "user account created"
-ROOT
+sudo nixos-enter --command 'useradd -c "$name" -m $login; passwd $login'
 
 echo reboot
 #reboot
