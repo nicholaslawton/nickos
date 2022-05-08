@@ -65,5 +65,5 @@ sudo cp /nix/store/*-nickos/configuration.nix /mnt/etc/nixos
 
 # Install
 
-nixos-install
+sudo nixos-install
 #reboot
