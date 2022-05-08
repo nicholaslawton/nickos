@@ -60,7 +60,7 @@ sudo mount /dev/disk/by-label/nixos /mnt
 sudo mkdir -p /mnt/boot
 sudo mount /dev/disk/by-label/boot /mnt/boot
 sudo nixos-generate-config --root /mnt
-echo "{ $ssid = { psk = \"$psk\"; };" | sudo tee /mnt/etc/nixos/networking-wireless-networks.nix > /dev/null
+echo "{ $ssid = { psk = \"$psk\"; }; }" | sudo tee /mnt/etc/nixos/networking-wireless-networks.nix > /dev/null
 sudo cp /nix/store/*-nickos/configuration.nix /mnt/etc/nixos
 
 # Install
