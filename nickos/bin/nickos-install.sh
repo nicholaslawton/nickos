@@ -76,7 +76,7 @@ read name
 echo -n "Account name for login: "
 read login
 
-sudo nixos-enter --command 'useradd -c "$name" -m $login; passwd $login'
+sudo nixos-enter --command "useradd --comment '$name' --create-home $login; passwd $login"
 
 echo reboot
 #reboot
