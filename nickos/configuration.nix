@@ -14,7 +14,7 @@
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.networks = import ./networking.wireless.networks.nix
+  networking.wireless.networks = import ./networking-wireless-networks.nix;
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
