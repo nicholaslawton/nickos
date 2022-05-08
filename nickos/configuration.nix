@@ -16,6 +16,14 @@
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.wireless.networks = import ./networking-wireless-networks.nix;
 
+  users.mutableUsers = false;
+  users.users.nicholas = {
+    isNormalUser = true;
+    home = "/home/nicholas";
+    description = "Nicholas Lawton";
+    extraGroups = [ "wheel" ];
+  };
+
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
