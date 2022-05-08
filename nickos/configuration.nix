@@ -6,7 +6,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./networking-wireless-networks.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -15,6 +14,7 @@
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.networks = import ./networking.wireless.networks.nix
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -64,11 +64,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  #   firefox
-  # ];
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    git
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
