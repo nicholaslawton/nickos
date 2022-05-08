@@ -16,7 +16,6 @@
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.wireless.networks = import ./networking-wireless-networks.nix;
 
-  users.mutableUsers = false;
   users.users.nicholas = {
     isNormalUser = true;
     home = "/home/nicholas";
