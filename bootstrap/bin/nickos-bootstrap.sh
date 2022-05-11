@@ -47,4 +47,4 @@ do
 done
 echo $status
 
-sh -c $(curl https://github.com/nicholaslawton/nickos/nickos-install.sh)
+curl -s https://raw.githubusercontent.com/nicholaslawton/nickos/main/install.sh | bash -s $ssid $psk
