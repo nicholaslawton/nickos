@@ -4,7 +4,7 @@
 }:
 
 let
-  nickos = copyPath "nickos" ./nickos;
+  nickos = copyPath "nickos-bootstrap" ./bootstrap;
 
   configuration = { pkgs, ... }: {
     imports = [
