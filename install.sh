@@ -1,7 +1,7 @@
 usage="Usage: $0 [WiFi network name] [WiFi password]"
 
-ssid=${1?usage}
-psk=${2?usage}
+ssid=${1?$usage}
+psk=${2?$usage}
 
 # Prepare disk
 
