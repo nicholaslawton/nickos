@@ -21,7 +21,7 @@ sudo mount /dev/disk/by-label/boot /mnt/boot
 
 sudo nixos-generate-config --root /mnt
 echo "{ $ssid = { psk = \"$psk\"; }; }" | sudo tee /mnt/etc/nixos/networking-wireless-networks.nix > /dev/null
-sudo cp /nix/store/*-nickos/configuration.nix /mnt/etc/nixos
+sudo curl --output-dir /mnt/etc/nixos -O https://raw.githubusercontent.com/nicholaslawton/nickos/main/configuration.nix
 
 # Install
 
