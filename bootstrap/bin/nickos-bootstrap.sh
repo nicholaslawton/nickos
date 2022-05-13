@@ -47,4 +47,13 @@ do
 done
 echo $status
 
+ping -c 1 nixos.org
+until [ $? -eq 0 ]
+do
+  sleep 1
+  ping -c 1 nixos.org
+done
+
+# Continue with installation from current version of main install script
+
 bash <(curl -s https://raw.githubusercontent.com/nicholaslawton/nickos/main/install.sh) $ssid $psk
