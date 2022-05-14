@@ -1,6 +1,6 @@
 { system ? builtins.currentSystem
 , nixpkgs ? <nixpkgs>
-, copyPath ? import ./copyPath.nix { stdenv = (import nixpkgs {}).stdenv; }
+, copyPath ? import ./copy-path.nix { stdenv = (import nixpkgs {}).stdenv; }
 }:
 
 let

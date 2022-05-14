@@ -2,6 +2,7 @@ name: pull-request
 on:
   pull_request:
     branches: main
+    paths: 'iso/**'
 jobs:
   build:
     uses: ./.github/workflows/build-iso.yml
