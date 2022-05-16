@@ -1,0 +1,7 @@
+[user]
+	email = %email%
+	name = %name%
+[core]
+	editor = vim
+[credential]
+	helper = store
