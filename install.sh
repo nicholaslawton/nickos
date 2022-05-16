@@ -38,7 +38,6 @@ read login
 sudo nixos-enter --command "useradd --comment '$name' --create-home $login; passwd $login"
 
 curl --location https://api.github.com/repos/nicholaslawton/nickos/tarball | \
-  tar --extract --gunzip --wildcards "*/home" --strip-components=2 --directory /mnt/home/$login
+  tar --extract --gunzip --directory /mnt/home/$login --wildcards "*/home" --strip-components=2
 
-echo reboot
-#reboot
+reboot
