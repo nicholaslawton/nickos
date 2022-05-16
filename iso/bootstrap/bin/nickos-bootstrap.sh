@@ -1,10 +1,8 @@
 # Connect to WiFi
 
 echo Enter your WiFi network details
-echo -n "Network name: "
-read ssid
-echo -n "Password: "
-read psk
+read -p "Network name: " ssid
+read -p "Password: " psk
 
 echo wpa_supplicant
 sudo systemctl start wpa_supplicant

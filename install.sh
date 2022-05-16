@@ -30,14 +30,16 @@ sudo nixos-install
 # Create user
 
 echo Enter your details to create your user account
-echo -n "Your full name: "
-read name
-echo -n "Account name for login: "
-read login
+read -p "Your full name: " name
+read -p "Account name for login: " login
+read -p "Your e-mail address (for your Git identity): " email
 
 sudo nixos-enter --command "useradd --comment '$name' --create-home $login; passwd $login"
 
 curl --location https://api.github.com/repos/nicholaslawton/nickos/tarball | \
   tar --extract --gunzip --directory /mnt/home/$login --wildcards "*/home" --strip-components=2
+
+sed --in-place "s/%name%/$name/" /mnt/home/$login/.gitconfig
+sed --in-place "s/%email%/$email/" /mnt/home/$login/.gitconfig
 
 reboot
