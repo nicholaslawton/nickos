@@ -40,20 +40,20 @@ sudo cp --recursive nixos /mnt/etc
 
 # Install
 
-#sudo nixos-install
+sudo nixos-install
 
 # Set user password
 
-#echo Choose a password for your user account
-#sudo nixos-enter --command "passwd $login"
+echo Choose a password for your user account
+sudo nixos-enter --command "passwd $login"
 
 # Initialise home
 
-#sed --in-place "s/%name%/$name/" home/.gitconfig
-#sed --in-place "s/%email%/$email/" home/.gitconfig
+sed --in-place "s/%name%/$name/" home/.gitconfig
+sed --in-place "s/%email%/$email/" home/.gitconfig
 
-#mv home $login
-#cp --recursive $login /mnt/home
+mv home $login
+cp --recursive $login /mnt/home
 
 # Reboot to finish
 
