@@ -3,6 +3,11 @@ usage="Usage: $0 [WiFi network name] [WiFi password]"
 ssid=${1?$usage}
 psk=${2?$usage}
 
+echo Enter your details to setup your user account
+read -p "Your full name: " name
+read -p "Account name for login: " login
+read -p "Your e-mail address (for your Git identity): " email
+
 # Prepare disk
 
 # TODO: erase disk
@@ -17,29 +22,39 @@ sudo mount /dev/disk/by-label/nixos /mnt
 sudo mkdir -p /mnt/boot
 sudo mount /dev/disk/by-label/boot /mnt/boot
 
+# Download installation resources
+
+curl --location https://api.github.com/repos/nicholaslawton/nickos/tarball | \
+  tar --extract --gunzip --strip-components=1
+
 # Prepare configuration
 
 sudo nixos-generate-config --root /mnt
-echo "{ $ssid = { psk = \"$psk\"; }; }" | sudo tee /mnt/etc/nixos/networking-wireless-networks.nix > /dev/null
-sudo curl --output-dir /mnt/etc/nixos -O https://raw.githubusercontent.com/nicholaslawton/nickos/main/configuration.nix
+
+sed --in-place "s/%ssid%/$ssid/" nixos/networking-wireless-networks.nix
+sed --in-place "s/%psk%/$psk/" nixos/networking-wireless-networks.nix
+sed --in-place "s/%name%/$name/" nixos/users.nix
+sed --in-place "s/%account%/$login/" nixos/users.nix
+
+cp --recursive nixos /mnt/etc
 
 # Install
 
 sudo nixos-install
 
-# Create user
+# Set user password
 
-echo Enter your details to create your user account
-read -p "Your full name: " name
-read -p "Account name for login: " login
-read -p "Your e-mail address (for your Git identity): " email
+echo Choose a password for your user account
+sudo nixos-enter --command "passwd $login"
 
-sudo nixos-enter --command "useradd --comment '$name' --create-home $login; passwd $login"
+# Initialise home
 
-curl --location https://api.github.com/repos/nicholaslawton/nickos/tarball | \
-  tar --extract --gunzip --directory /mnt/home/$login --wildcards "*/home" --strip-components=2
+sed --in-place "s/%name%/$name/" home/.gitconfig
+sed --in-place "s/%email%/$email/" home/.gitconfig
 
-sed --in-place "s/%name%/$name/" /mnt/home/$login/.gitconfig
-sed --in-place "s/%email%/$email/" /mnt/home/$login/.gitconfig
+mv home $login
+cp --recursive $login /mnt/home
 
-reboot
+# Reboot to finish
+
+#reboot
