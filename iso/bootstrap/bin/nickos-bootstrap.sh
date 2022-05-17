@@ -52,6 +52,11 @@ do
   ping -c 1 nixos.org
 done
 
+# Download installation resources
+
+curl --location https://api.github.com/repos/nicholaslawton/nickos/tarball | \
+  tar --extract --gunzip --strip-components=1
+
 # Continue with installation from current version of main install script
 
-bash <(curl -s https://raw.githubusercontent.com/nicholaslawton/nickos/main/install.sh) $ssid $psk
+./install.sh $ssid $psk
