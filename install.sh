@@ -36,7 +36,7 @@ sed --in-place "s/%psk%/$psk/" nixos/networking.nix
 sed --in-place "s/%name%/$name/" nixos/users.nix
 sed --in-place "s/%account%/$login/" nixos/users.nix
 
-cp --recursive nixos /mnt/etc
+sudo cp --recursive nixos /mnt/etc
 
 # Install
 
