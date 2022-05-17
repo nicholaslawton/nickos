@@ -1,2 +1,2 @@
-# nickos
+# NickOS
 My NixOS installation

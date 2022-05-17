@@ -12,6 +12,8 @@ let
       "${nixpkgs}/nixos/modules/installer/cd-dvd/channel.nix"
     ];
 
+    system.defaultChannel = "https://nixos.org/channels/nixos-unstable";
+
     networking.wireless.enable = true;
 
     environment.systemPackages = [ nickos ];

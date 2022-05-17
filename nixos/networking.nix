@@ -11,5 +11,5 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   useDHCP = false;
-  interfaces.wlp1s0.useDHCP = true;
+  interfaces.%ifname%.useDHCP = true;
 }
