@@ -7,4 +7,4 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      run: 'echo "ISO not affected; no build required."'
+    - run: 'echo "ISO not affected; no build required."'
