@@ -4,5 +4,5 @@
     home = "/home/%account%";
     description = "%name%";
     extraGroups = [ "wheel" ];
-  }
+  };
 }
