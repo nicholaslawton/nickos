@@ -14,7 +14,7 @@
 
   networking = import ./networking.nix;
 
-  users = import ./users.nix;
+  users = import ./users.nix pkgs;
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
