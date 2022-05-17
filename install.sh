@@ -31,8 +31,8 @@ curl --location https://api.github.com/repos/nicholaslawton/nickos/tarball | \
 
 sudo nixos-generate-config --root /mnt
 
-sed --in-place "s/%ssid%/$ssid/" nixos/networking-wireless-networks.nix
-sed --in-place "s/%psk%/$psk/" nixos/networking-wireless-networks.nix
+sed --in-place "s/%ssid%/$ssid/" nixos/networking.nix
+sed --in-place "s/%psk%/$psk/" nixos/networking.nix
 sed --in-place "s/%name%/$name/" nixos/users.nix
 sed --in-place "s/%account%/$login/" nixos/users.nix
 
