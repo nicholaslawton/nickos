@@ -44,8 +44,7 @@ sudo nixos-install
 
 # Set user password
 
-echo Choose a password for your user account
-sudo nixos-enter --command "passwd $login"
+sudo nixos-enter --command "echo \"Choose a password for your '$login' user account\"; passwd $login"
 
 # Initialise home
 
