@@ -1,17 +1,15 @@
 # Nushell Environment Config File
 
 def create_left_prompt [] {
-    let path_segment = ($env.PWD)
+  let path_segment = ($env.PWD)
 
-    $path_segment
+  $path_segment
 }
 
 def create_right_prompt [] {
-    let time_segment = ([
-        (date now | date format '%_d %b %_I:%M%P')
-    ] | str collect)
-
-    $time_segment
+  let battery-capacity = (open /sys/class/power_supply/BAT0/capacity | str trim)
+  let time = (date now | date format '%_I:%M')
+  $'($battery-capacity)% | ($time)'
 }
 
 # Use nushell functions to define your right and left prompt
