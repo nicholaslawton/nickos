@@ -1,5 +1,9 @@
 # Nushell Environment Config File
 
+def nickos-rebuild-home [] {
+  nix-env -iA nixos.%account%
+}
+
 def create_left_prompt [] {
   let path_segment = ($env.PWD)
 
