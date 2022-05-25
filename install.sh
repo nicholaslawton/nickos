@@ -49,6 +49,7 @@ sudo nixos-enter --command "echo \"Choose a password for your '$login' user acco
 sed --in-place "s/%name%/$name/" home/.gitconfig
 sed --in-place "s/%email%/$email/" home/.gitconfig
 sed --in-place "s/%account%/$login/" home/.config/nixpkgs/config.nix
+sed --in-place "s/%account%/$login/" home/.config/nushell/env.nu
 
 mv home $login
 cp --recursive $login /mnt/home

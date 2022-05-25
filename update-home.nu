@@ -2,15 +2,21 @@
 
 let account = (whoami | str trim)
 
-rm --recursive --force $account
+def substitutions [file: path] {
+  open $file
+    | str replace '%email%' (git config user.email | str trim) --all
+    | str replace '%name%' (git config user.name | str trim) --all
+    | str replace '%account%' $account --all
+    | save $file
+}
+
+rm --recursive --force --quiet $account
 cp --recursive home $account
-open $'($account)/.gitconfig'
-  | str replace '%email%' (git config user.email | str trim) --all
-  | str replace '%name%' (git config user.name | str trim) --all
-  | save $'($account)/.gitconfig'
-open $'($account)/.config/nixpkgs/config.nix'
-  | str replace '%account%' $account --all
-  | save $'($account)/.config/nixpkgs/config.nix'
-#mv --quiet $'($account)/**' ~
+
+ls -a $'($account)/**/*'
+  | where type == file
+  | get name
+  | each { |it| substitutions $it }
+
 cp --recursive $account /home
 rm --recursive --force --quiet $account
