@@ -6,8 +6,6 @@
     %account% = pkgs.buildEnv {
       name = "%account%";
       paths = [
-        tmux
-        w3m
       ];
     };
   };

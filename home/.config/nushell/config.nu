@@ -141,7 +141,7 @@ let $config = {
   float_precision: 2
   use_ansi_coloring: true
   filesize_format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
-  edit_mode: emacs # emacs, vi
+  edit_mode: vi # emacs, vi
   max_history_size: 10000 # Session has to be reloaded for this to take effect
   sync_history_on_enter: true # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
   menus: [
