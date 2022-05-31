@@ -1,6 +1,6 @@
 # Nushell Environment Config File
 
-def nickos-rebuild-home [] {
+def "nickos home rebuild" [] {
   nix-env -iA nixos.%account%
 }
 
