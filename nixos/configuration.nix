@@ -14,6 +14,8 @@
     nushell
     vim
     git
+    tmux
+    w3m
   ];
 
   time.timeZone = "Australia/Melbourne";
