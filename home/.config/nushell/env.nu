@@ -4,16 +4,30 @@ def "nickos home rebuild" [] {
   nix-env -iA nixos.%account%
 }
 
-def create_left_prompt [] {
-  let path_segment = ($env.PWD)
+let prompt-style = {
+  fg: '#000000'
+  bg: '#00ffff'
+  attr: b
+}
 
-  $path_segment
+def create_left_prompt [] {
+  echo [
+    (ansi -e $prompt-style)
+    $env.PWD
+    (ansi reset)
+  ] | str collect
 }
 
 def create_right_prompt [] {
   let battery-capacity = (open /sys/class/power_supply/BAT0/capacity | str trim)
   let time = (date now | date format '%_I:%M')
-  $'($battery-capacity)% | ($time)'
+
+  echo [
+    (ansi reset)
+    $battery-capacity '% '
+    (ansi -e $prompt-style)
+    $time
+  ] | str collect
 }
 
 # Use nushell functions to define your right and left prompt
@@ -23,7 +37,7 @@ let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
 let-env PROMPT_INDICATOR = { "〉" }
-let-env PROMPT_INDICATOR_VI_INSERT = { ": " }
+let-env PROMPT_INDICATOR_VI_INSERT = { " " }
 let-env PROMPT_INDICATOR_VI_NORMAL = { "〉" }
 let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
 
