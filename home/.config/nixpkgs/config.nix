@@ -10,6 +10,7 @@
       paths = [
         sway
         foot
+        qutebrowser
         gitkraken
       ];
     };
