@@ -27,6 +27,7 @@ def create_right_prompt [] {
     $battery-capacity '% '
     (ansi -e $prompt-style)
     $time
+    (ansi reset)
   ] | str collect
 }
 
@@ -72,3 +73,6 @@ let-env NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | prepend '/some/path')
+
+# The cursor is not visible in sway. Switching from the graphics driver cursor to a software cursor resolves it.
+let-env WLR_NO_HARDWARE_CURSORS = 1
