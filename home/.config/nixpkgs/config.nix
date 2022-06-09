@@ -7,6 +7,7 @@
       name = "%account%";
       paths = [
         sway
+        foot
       ];
     };
   };
