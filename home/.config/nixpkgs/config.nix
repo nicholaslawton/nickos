@@ -19,11 +19,11 @@
 
   xdg.mime.enable = true;
   xdg.mime.defaultApplications = {
-    "text/html" = "org.qutebrowser.qutebrowser.desktop";
-    "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
-    "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
-    "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
-    "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+    "text/html" = "qutebrowser.desktop";
+    "x-scheme-handler/http" = "qutebrowser.desktop";
+    "x-scheme-handler/https" = "qutebrowser.desktop";
+    "x-scheme-handler/about" = "qutebrowser.desktop";
+    "x-scheme-handler/unknown" = "qutebrowser.desktop";
   };
-  environment.sessionsVariables.DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
+  #environment.sessionsVariables.DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
 }
