@@ -20,6 +20,7 @@
     w3m
     sway
     foot
+    dmenu
     qutebrowser
     gitkraken
     xdg-utils
