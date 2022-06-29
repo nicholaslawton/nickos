@@ -25,6 +25,14 @@
     xdg-utils
   ];
 
+  xdg.mime.defaultApplications = {
+    "text/html" = "qutebrowser.desktop";
+    "x-scheme-handler/http" = "qutebrowser.desktop";
+    "x-scheme-handler/https" = "qutebrowser.desktop";
+    "x-scheme-handler/about" = "qutebrowser.desktop";
+    "x-scheme-handler/unknown" = "qutebrowser.desktop";
+  };
+
   time.timeZone = "Australia/Melbourne";
 
   networking = import ./networking.nix;
@@ -42,14 +50,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
-  xdg.mime.enable = true;
-  xdg.mime.defaultApplications = {
-    "text/html" = "qutebrowser.desktop";
-    "x-scheme-handler/http" = "qutebrowser.desktop";
-    "x-scheme-handler/https" = "qutebrowser.desktop";
-    "x-scheme-handler/about" = "qutebrowser.desktop";
-    "x-scheme-handler/unknown" = "qutebrowser.desktop";
-  };
-  environment.sessionVariables.DEFAULT_BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";
 }
