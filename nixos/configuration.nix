@@ -34,6 +34,19 @@
     "x-scheme-handler/unknown" = "qutebrowser.desktop";
   };
 
+  fonts = {
+    fonts = with pkgs; [
+      iosevka
+    ];
+
+    enableDefaultFonts = true;
+    fontconfig = {
+      defaultFonts = {
+        monospace = ["iosevka"];
+      };
+    };
+  };
+
   time.timeZone = "Australia/Melbourne";
 
   networking = import ./networking.nix;
