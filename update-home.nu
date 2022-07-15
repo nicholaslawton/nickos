@@ -3,7 +3,7 @@
 let account = (whoami | str trim)
 
 def substitutions [file: path] {
-  open $file
+  open $file --raw
     | decode utf-8
     | str replace --all '%email%' (git config user.email | str trim)
     | str replace --all '%name%' (git config user.name | str trim)

@@ -8,6 +8,8 @@
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -16,7 +18,34 @@
     git
     tmux
     w3m
+    sway
+    foot
+    dmenu
+    qutebrowser
+    gitkraken
+    xdg-utils
   ];
+
+  xdg.mime.defaultApplications = {
+    "text/html" = "qutebrowser.desktop";
+    "x-scheme-handler/http" = "qutebrowser.desktop";
+    "x-scheme-handler/https" = "qutebrowser.desktop";
+    "x-scheme-handler/about" = "qutebrowser.desktop";
+    "x-scheme-handler/unknown" = "qutebrowser.desktop";
+  };
+
+  fonts = {
+    fonts = with pkgs; [
+      iosevka
+    ];
+
+    enableDefaultFonts = true;
+    fontconfig = {
+      defaultFonts = {
+        monospace = ["iosevka"];
+      };
+    };
+  };
 
   time.timeZone = "Australia/Melbourne";
 
@@ -35,6 +64,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
-

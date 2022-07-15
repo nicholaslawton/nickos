@@ -1,7 +1,9 @@
 # To apply this configuation:
-# nix-env -iA nixos.%account%
+# nickos home rebuild
 
 {
+  allowUnfree = true;
+
   packageOverrides = pkgs: with pkgs; {
     %account% = pkgs.buildEnv {
       name = "%account%";
