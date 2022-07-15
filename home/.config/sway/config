@@ -20,6 +20,11 @@ set $term foot
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
+### Window configuation
+#
+# Remove window borders by default
+default_border none
+
 ### Output configuration
 #
 # Default wallpaper
