@@ -26,6 +26,11 @@
     xdg-utils
   ];
 
+  # sway requires polkit to work - without polikit, sway will report permission errors about seats and logind and stuff...
+  security.polkit.enable = true;
+
+  hardware.opengl.enable = true;
+
   xdg.mime.defaultApplications = {
     "text/html" = "qutebrowser.desktop";
     "x-scheme-handler/http" = "qutebrowser.desktop";
