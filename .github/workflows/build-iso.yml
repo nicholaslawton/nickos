@@ -10,11 +10,8 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
     - run: nix-build iso
-    - run: ls -al result/iso
-    - run: echo test > result/iso/test.txt
-    - run: cat result/iso/test.txt
-    - run: mv result/iso/*.iso result/iso/nickos.iso
+    - run: mv result/iso/*.iso nickos.iso
     - uses: actions/upload-artifact@v3
       with:
         name: nickos-iso
-        path: result/iso/nickos.iso
+        path: nickos.iso
