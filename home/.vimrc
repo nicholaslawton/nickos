@@ -4,3 +4,6 @@ set expandtab
 
 imap jk <Esc>
 imap kj <Esc>
+
+colorscheme habamax
+syntax on
