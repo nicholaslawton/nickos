@@ -45,12 +45,15 @@ do
 done
 echo $status
 
-ping -c 1 nixos.org
+echo testing connection to nixos.org...
+curl --location --silent --output /dev/null nixos.org
 until [ $? -eq 0 ]
 do
   sleep 1
-  ping -c 1 nixos.org
+  echo testing connection to nixos.org...
+  curl --location --silent --output /dev/null nixos.org
 done
+echo connection verified
 
 # Download installation resources
 
