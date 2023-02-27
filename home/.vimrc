@@ -6,7 +6,6 @@ set number
 imap jk <Esc>
 imap kj <Esc>
 
+syntax on
 colorscheme habamax
 highlight MatchParen ctermfg=250 ctermbg=66
-
-syntax on
