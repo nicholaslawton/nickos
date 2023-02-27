@@ -7,4 +7,6 @@ imap jk <Esc>
 imap kj <Esc>
 
 colorscheme habamax
+highlight MatchParen ctermfg=250 ctermbg=66
+
 syntax on
