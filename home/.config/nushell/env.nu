@@ -1,25 +1,21 @@
 # Nushell Environment Config File
 
-def "nickos home rebuild" [] {
-  nix-env -iA nixos.%account%
-}
-
 def create_left_prompt [] {
-  if (is-admin) {
-    $"(ansi red_bold)($env.PWD)"
-  } else {
-    $"(ansi green_bold)($env.PWD)"
-  }
+    let path_segment = if (is-admin) {
+        $"(ansi red_bold)($env.PWD)"
+    } else {
+        $"(ansi green_bold)($env.PWD)"
+    }
+
+    $path_segment
 }
 
 def create_right_prompt [] {
-  let battery_capacity = (open /sys/class/power_supply/BAT0/capacity | str trim)
-  let time = (date now | date format '%_I:%M')
-  [
-    $battery_capacity
-    '% '
-    $time
-  ] | str join
+    let time_segment = ([
+        (date now | date format '%m/%d/%Y %r')
+    ] | str join)
+
+    $time_segment
 }
 
 # Use nushell functions to define your right and left prompt
