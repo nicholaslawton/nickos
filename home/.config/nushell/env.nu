@@ -11,11 +11,13 @@ def create_left_prompt [] {
 }
 
 def create_right_prompt [] {
-    let time_segment = ([
-        (date now | date format '%m/%d/%Y %r')
-    ] | str join)
-
-    $time_segment
+  let battery_capacity = (open /sys/class/power_supply/BAT0/capacity | str trim)
+  let time = (date now | date format '%_I:%M')
+  [
+    $battery_capacity
+    '% | '
+    $time
+  ] | str join
 }
 
 # Use nushell functions to define your right and left prompt
