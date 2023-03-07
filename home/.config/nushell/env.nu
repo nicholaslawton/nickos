@@ -1,15 +1,13 @@
 # Nushell Environment Config File
 
-def "nickos home rebuild" [] {
-  nix-env -iA nixos.%account%
-}
-
 def create_left_prompt [] {
-  if (is-admin) {
-    $"(ansi red_bold)($env.PWD)"
-  } else {
-    $"(ansi green_bold)($env.PWD)"
-  }
+    let path_segment = if (is-admin) {
+        $"(ansi red_bold)($env.PWD)"
+    } else {
+        $"(ansi green_bold)($env.PWD)"
+    }
+
+    $path_segment
 }
 
 def create_right_prompt [] {
@@ -17,7 +15,7 @@ def create_right_prompt [] {
   let time = (date now | date format '%_I:%M')
   [
     $battery_capacity
-    '% '
+    '% | '
     $time
   ] | str join
 }

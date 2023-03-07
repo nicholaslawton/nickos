@@ -56,4 +56,4 @@ cp --recursive $login /mnt/home
 
 # Reboot to finish
 
-reboot
+sudo reboot
