@@ -12,17 +12,37 @@ read -p "Your e-mail address (for your Git identity): " email
 
 # Prepare disk
 
-# TODO: erase disk
-# TODO: partition
+lsblk
 
-sudo mkfs.ext4 -L nixos /dev/sda8
-sudo mkfs.fat -F 32 -n boot /dev/sda7
+read -p "Enter the name of the target installation device (eg. sda): " devname
+
+dev=/dev/$devname
+
+# TODO: erase disk
+
+# Partition
+
+sudo parted $dev -- mklabel gpt
+sudo parted $dev -- mkpart primary 512MB -8GB
+sudo parted $dev -- mkpart primary linux-swap -8GB 100%
+sudo parted $dev -- mkpart ESP fat32 1MB 512MB
+sudo parted $dev -- set 3 esp on
+
+# Format
+
+sudo mkfs.ext4 -L nixos ${dev}1
+sudo mkswap -L swap ${dev}2
+sudo mkfs.fat -F 32 -n boot ${dev}3
 
 # Mount
 
 sudo mount /dev/disk/by-label/nixos /mnt
 sudo mkdir -p /mnt/boot
 sudo mount /dev/disk/by-label/boot /mnt/boot
+
+# Enable swap
+
+sudo swapon ${dev}2
 
 # Prepare configuration
 
