@@ -19,8 +19,6 @@ do
   dev=/dev/$devname
 done
 
-# TODO: erase disk
-
 # Partition
 
 sudo parted $dev -- mklabel gpt
