@@ -17,9 +17,6 @@ do
   lsblk
   read -p "Enter the name of the target installation device (eg. sda): " devname
   dev=/dev/$devname
-  if ! ls --directory $dev; then
-    echo "$dev is not a valid device"
-  fi
 done
 
 # TODO: erase disk
