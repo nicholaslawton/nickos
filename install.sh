@@ -23,53 +23,27 @@ done
 
 # Partition
 
-lsblk
-read -p "Press ENTER to continue"
 sudo parted $dev -- mklabel gpt
-lsblk
-read -p "Press ENTER to continue"
 sudo parted $dev -- mkpart primary 512MB -8GB
-lsblk
-read -p "Press ENTER to continue"
 sudo parted $dev -- mkpart primary linux-swap -8GB 100%
-lsblk
-read -p "Press ENTER to continue"
 sudo parted $dev -- mkpart ESP fat32 1MB 512MB
-lsblk
-read -p "Press ENTER to continue"
 sudo parted $dev -- set 3 esp on
-lsblk
-read -p "Press ENTER to continue"
 
 # Format
 
 sudo mkfs.ext4 -L nixos ${dev}1
-lsblk
-read -p "Press ENTER to continue"
 sudo mkswap -L swap ${dev}2
-lsblk
-read -p "Press ENTER to continue"
 sudo mkfs.fat -F 32 -n boot ${dev}3
-lsblk
-read -p "Press ENTER to continue"
 
 # Mount
 
 sudo mount /dev/disk/by-label/nixos /mnt
-lsblk
-read -p "Press ENTER to continue"
 sudo mkdir -p /mnt/boot
-lsblk
-read -p "Press ENTER to continue"
 sudo mount /dev/disk/by-label/boot /mnt/boot
-lsblk
-read -p "Press ENTER to continue"
 
 # Enable swap
 
 sudo swapon ${dev}2
-lsblk
-read -p "Press ENTER to continue"
 
 # Prepare configuration
 
