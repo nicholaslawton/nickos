@@ -1,5 +1,9 @@
 # Nushell Environment Config File
 
+def "nickos home rebuild" [] {
+  nix-env -iA nixos.%account%
+}
+
 def create_left_prompt [] {
     let path_segment = if (is-admin) {
         $"(ansi red_bold)($env.PWD)"
