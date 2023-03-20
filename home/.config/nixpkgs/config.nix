@@ -8,6 +8,7 @@
     %account% = pkgs.buildEnv {
       name = "%account%";
       paths = [
+        helix
       ];
     };
   };
