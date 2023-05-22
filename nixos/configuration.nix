@@ -54,6 +54,8 @@
 
   time.timeZone = "Australia/Melbourne";
 
+  sound.enable = true;
+
   networking = import ./networking.nix;
 
   users = import ./users.nix pkgs;
