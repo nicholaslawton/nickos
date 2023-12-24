@@ -8,7 +8,7 @@
     %account% = pkgs.buildEnv {
       name = "%account%";
       paths = [
-        cc
+        gcc
         rustup
         helix
       ];
